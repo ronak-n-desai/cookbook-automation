@@ -8,13 +8,13 @@ export default async function Home() {
     <main className="main-content">
       <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '1rem', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-          My Recipes
+          Claire & Ronak's Cookbook
         </h1>
         <p style={{ color: 'var(--text-secondary)' }}>
-          A collection of my favorite meals, automatically synced from Google Sheets.
+          A collection of our favorite recipes
         </p>
       </div>
-      
+
       <RecipeGallery recipes={recipes} />
     </main>
   );

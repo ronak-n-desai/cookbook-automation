@@ -16,13 +16,13 @@ export default function Navbar() {
         Cookbook
       </Link>
       <div>
-        <a 
-          href={process.env.NEXT_PUBLIC_SHEET_URL || "https://docs.google.com/spreadsheets/"} 
-          target="_blank" 
+        <a
+          href={process.env.NEXT_PUBLIC_SHEET_URL || "https://docs.google.com/spreadsheets/"}
+          target="_blank"
           rel="noopener noreferrer"
           style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}
         >
-          Edit in Google Sheets ↗
+          Download Excel File
         </a>
       </div>
     </nav>
