@@ -241,12 +241,6 @@ a:hover {
   gap: 3rem;
 }
 
-@media (max-width: 768px) {
-  .recipe-content {
-    grid-template-columns: 1fr;
-  }
-}
-
 .ingredients-panel {
   background: var(--surface-color);
   border: 1px solid var(--surface-border);
@@ -255,6 +249,18 @@ a:hover {
   height: fit-content;
   position: sticky;
   top: 100px;
+}
+
+@media (max-width: 768px) {
+  .recipe-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .ingredients-panel {
+    position: static !important;
+    height: auto !important;
+    margin-bottom: 2rem;
+  }
 }
 
 .ingredients-panel h3 {
