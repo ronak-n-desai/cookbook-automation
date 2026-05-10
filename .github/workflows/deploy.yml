@@ -45,8 +45,8 @@ jobs:
       - name: Build with Next.js
         run: npm run build
         # If using an environment variable for Google Sheets, it can be passed here:
-        # env:
-        #   NEXT_PUBLIC_SHEET_URL: ${{ secrets.NEXT_PUBLIC_SHEET_URL }}
+        env:
+          NEXT_PUBLIC_SHEET_URL: ${{ secrets.NEXT_PUBLIC_SHEET_URL }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
