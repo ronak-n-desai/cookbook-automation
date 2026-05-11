@@ -31,7 +31,8 @@ body {
 }
 
 /* Background soft glows */
-body::before, body::after {
+body::before,
+body::after {
   content: '';
   position: fixed;
   width: 600px;
@@ -256,6 +257,7 @@ a:hover {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .ingredients-panel {
     position: static !important;
     height: auto !important;
