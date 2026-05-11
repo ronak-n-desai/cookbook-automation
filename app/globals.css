@@ -271,22 +271,45 @@ a:hover {
   font-size: 1.25rem;
 }
 
-.ingredients-list {
-  list-style-type: none;
+.markdown-ingredients h1,
+.markdown-ingredients h2,
+.markdown-ingredients h3,
+.markdown-ingredients h4,
+.markdown-ingredients h5,
+.markdown-ingredients h6 {
+  color: var(--accent-color);
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.5rem;
+  font-weight: 600;
 }
 
-.ingredients-list li {
-  padding: 0.75rem 0;
+.markdown-ingredients h1:first-child,
+.markdown-ingredients h2:first-child,
+.markdown-ingredients h3:first-child,
+.markdown-ingredients h4:first-child,
+.markdown-ingredients h5:first-child,
+.markdown-ingredients h6:first-child {
+  margin-top: 0;
+}
+
+.markdown-ingredients ul {
+  list-style-type: none;
+  margin-bottom: 1rem;
+}
+
+.markdown-ingredients li {
+  padding: 0.5rem 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: flex-start;
+  color: var(--text-secondary);
 }
 
-.ingredients-list li:last-child {
+.markdown-ingredients li:last-child {
   border-bottom: none;
 }
 
-.ingredients-list li::before {
+.markdown-ingredients li::before {
   content: '•';
   color: var(--accent-color);
   font-weight: bold;

@@ -24,7 +24,6 @@ export default async function RecipePage({ params }) {
     );
   }
 
-  const ingredients = recipe.Ingredients ? recipe.Ingredients.split('\n').filter(Boolean) : [];
   const description = recipe.Description || recipe.Tags;
 
   return (
@@ -51,12 +50,10 @@ export default async function RecipePage({ params }) {
       <div className="recipe-content">
         <aside className="ingredients-panel">
           <h3>Ingredients</h3>
-          {ingredients.length > 0 ? (
-            <ul className="ingredients-list">
-              {ingredients.map((ing, idx) => (
-                <li key={idx}>{ing}</li>
-              ))}
-            </ul>
+          {recipe.Ingredients ? (
+            <div className="markdown-ingredients">
+              <ReactMarkdown>{recipe.Ingredients}</ReactMarkdown>
+            </div>
           ) : (
             <p style={{ color: 'var(--text-secondary)' }}>No ingredients listed.</p>
           )}
