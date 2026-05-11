@@ -22,8 +22,12 @@ export default function RecipeGallery({ recipes }) {
   // Filter recipes
   const filteredRecipes = useMemo(() => {
     return recipes.filter(recipe => {
-      const matchesSearch = recipe['Recipe Name']?.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            recipe.Tags?.toLowerCase().includes(searchQuery.toLowerCase());
+      const searchLower = searchQuery.toLowerCase();
+      const desc = recipe.Description || recipe.Tags || '';
+      const matchesSearch = recipe['Recipe Name']?.toLowerCase().includes(searchLower) || 
+                            desc.toLowerCase().includes(searchLower) ||
+                            recipe.Ingredients?.toLowerCase().includes(searchLower) ||
+                            recipe.Instructions?.toLowerCase().includes(searchLower);
       const matchesCuisine = selectedCuisine ? recipe['Cuisine Type'] === selectedCuisine : true;
       const matchesMeal = selectedMeal ? recipe.Meal === selectedMeal : true;
       
@@ -36,7 +40,7 @@ export default function RecipeGallery({ recipes }) {
       <div className="search-container">
         <input 
           type="text" 
-          placeholder="Search recipes or tags..." 
+          placeholder="Search recipes, ingredients, or instructions..." 
           className="search-input"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}

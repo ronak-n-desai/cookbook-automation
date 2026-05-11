@@ -25,7 +25,7 @@ export default async function RecipePage({ params }) {
   }
 
   const ingredients = recipe.Ingredients ? recipe.Ingredients.split('\n').filter(Boolean) : [];
-  const tags = recipe.Tags ? recipe.Tags.split(',').map(t => t.trim()).filter(Boolean) : [];
+  const description = recipe.Description || recipe.Tags;
 
   return (
     <main className="main-content">
@@ -41,12 +41,10 @@ export default async function RecipePage({ params }) {
           <span className="tag-badge">{recipe['Cuisine Type']}</span>
           <span>{recipe.Meal}</span>
         </div>
-        {tags.length > 0 && (
-          <div className="recipe-card-tags" style={{ marginTop: '1rem' }}>
-            {tags.map((tag, i) => (
-              <span key={i} className="tag">#{tag}</span>
-            ))}
-          </div>
+        {description && (
+          <p className="recipe-description" style={{ marginTop: '1rem', color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.6' }}>
+            {description}
+          </p>
         )}
       </header>
 
