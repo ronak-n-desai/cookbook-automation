@@ -33,7 +33,7 @@ function formatInstructions(instructionsList, sourceUrl = null) {
     .join('\n');
 
   if (sourceUrl) {
-    return `${formatted}\n\nSource: ${sourceUrl}`;
+    return `${formatted}\n\nSource: [Original Recipe](${sourceUrl})`;
   }
   return formatted;
 }
@@ -260,27 +260,39 @@ export default function RecipeScraper() {
             <div className="scraper-output-panel">
               <div className="scraper-panel-header">
                 <h3>Instructions</h3>
-                <button
-                  id="copy-instructions-btn"
-                  className={`scraper-copy-btn ${copiedField === 'instructions' ? 'copied' : ''}`}
-                  onClick={() => copyToClipboard(instructions, 'instructions')}
-                >
-                  {copiedField === 'instructions' ? (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      Copied!
-                    </>
-                  ) : (
-                    <>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-                      </svg>
-                      Copy
-                    </>
+                <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+                  {url && (
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', textDecoration: 'underline' }}
+                    >
+                      View Original
+                    </a>
                   )}
-                </button>
+                  <button
+                    id="copy-instructions-btn"
+                    className={`scraper-copy-btn ${copiedField === 'instructions' ? 'copied' : ''}`}
+                    onClick={() => copyToClipboard(instructions, 'instructions')}
+                  >
+                    {copiedField === 'instructions' ? (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                        Copied!
+                      </>
+                    ) : (
+                      <>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                        </svg>
+                        Copy
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
               <textarea
                 id="instructions-output"
