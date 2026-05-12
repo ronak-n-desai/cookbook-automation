@@ -21,8 +21,8 @@ function formatIngredients(ingredientGroups) {
   return lines.join('\n');
 }
 
-function formatInstructions(instructionsList) {
-  return instructionsList
+function formatInstructions(instructionsList, sourceUrl = null) {
+  const formatted = instructionsList
     .map((inst, i) => {
       let text = inst.trim();
       if (!text) return "";
@@ -31,6 +31,11 @@ function formatInstructions(instructionsList) {
       return `${i + 1}. ${text}`;
     })
     .join('\n');
+
+  if (sourceUrl) {
+    return `${formatted}\n\nSource: ${sourceUrl}`;
+  }
+  return formatted;
 }
 
 function extractRecipeFromLD(ldJson) {
@@ -150,7 +155,7 @@ export default function RecipeScraper() {
 
       setTitle(recipe.name || 'Recipe');
       setIngredients(formatIngredients(ingredientGroups));
-      setInstructions(formatInstructions(instructionsList));
+      setInstructions(formatInstructions(instructionsList, targetUrl));
     } catch (err) {
       setError(err.message || 'An unknown error occurred.');
     } finally {
