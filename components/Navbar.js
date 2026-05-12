@@ -15,12 +15,15 @@ export default function Navbar() {
         </svg>
         Cookbook
       </Link>
-      <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <Link href="/scraper" className="navbar-link">
+          Recipe Scraper
+        </Link>
         <a
           href={process.env.NEXT_PUBLIC_SHEET_URL || "https://docs.google.com/spreadsheets/"}
           target="_blank"
           rel="noopener noreferrer"
-          style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}
+          className="navbar-link"
         >
           Download Excel File
         </a>
